@@ -1,7 +1,7 @@
 {
-  "name": "corestore",
-  "version": "7.0.19",
-  "description": "A Hypercore factory that simplifies managing collections of cores.",
+  "name": "spacecorestore",
+  "version": "0.0.1",
+  "description": "A Spacecore factory that simplifies managing collections of cores.",
   "main": "index.js",
   "files": [
     "index.js",
@@ -9,10 +9,10 @@
   ],
   "dependencies": {
     "b4a": "^1.6.7",
-    "hypercore": "^11.0.0",
-    "hypercore-crypto": "^3.4.2",
-    "hypercore-errors": "^1.4.0",
-    "hypercore-id-encoding": "^1.3.0",
+    "bitspacecore": "^0.0.8",
+    "spacecore-crypto": "^0.0.2",
+    "spacecore-errors": "^0.0.1",
+    "spacecore-id-encoding": "^1.3.1",
     "ready-resource": "^1.1.1",
     "sodium-universal": "^4.0.1"
   },
@@ -27,12 +27,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/holepunchto/corestore2.git"
+    "url": "https://github.com/samooth/corestore2.git"
   },
   "author": "Holepunch Inc",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/holepunchto/corestore2/issues"
+    "url": "https://github.com/samooth/corestore2/issues"
   },
-  "homepage": "https://github.com/holepunchto/corestore2"
+  "homepage": "https://github.com/samooth/corestore2"
 }

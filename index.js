@@ -1,10 +1,10 @@
 const b4a = require('b4a')
-const Hypercore = require('hypercore')
+const Spacecore = require('spacecore')
 const ReadyResource = require('ready-resource')
 const sodium = require('sodium-universal')
-const crypto = require('hypercore-crypto')
-const ID = require('hypercore-id-encoding')
-const { STORAGE_EMPTY } = require('hypercore-errors')
+const crypto = require('spacecore-crypto')
+const ID = require('spacecore-id-encoding')
+const { STORAGE_EMPTY } = require('spacecore-errors')
 
 const auditStore = require('./lib/audit.js')
 
@@ -228,7 +228,7 @@ class Corestore extends ReadyResource {
     super()
 
     this.root = opts.root || null
-    this.storage = this.root ? this.root.storage : Hypercore.defaultStorage(storage)
+    this.storage = this.root ? this.root.storage : Spacecore.defaultStorage(storage)
     this.streamTracker = this.root ? this.root.streamTracker : new StreamTracker()
     this.cores = this.root ? this.root.cores : new CoreTracker()
     this.sessions = new SessionTracker()
@@ -380,7 +380,7 @@ class Corestore extends ReadyResource {
     this._maybeClosed()
 
     const isExternal = isStream(isInitiator)
-    const stream = Hypercore.createProtocolStream(isInitiator, {
+    const stream = Spacecore.createProtocolStream(isInitiator, {
       ...opts,
       ondiscoverykey: discoveryKey => {
         if (this.closing) return
@@ -463,7 +463,7 @@ class Corestore extends ReadyResource {
   }
 
   _makeSession (conf) {
-    const session = new Hypercore(null, null, conf)
+    const session = new Spacecore(null, null, conf)
     if (this._findingPeers !== null) this._findingPeers.add(session)
     return session
   }
@@ -475,7 +475,7 @@ class Corestore extends ReadyResource {
 
   async _preloadCheckIfExists (opts) {
     const has = await this.storage.has(opts.discoveryKey)
-    if (!has) throw STORAGE_EMPTY('No Hypercore is stored here')
+    if (!has) throw STORAGE_EMPTY('No Spacecore is stored here')
     return this._preload(opts)
   }
 
@@ -519,7 +519,7 @@ class Corestore extends ReadyResource {
     }
 
     if (opts.key) result.key = ID.decode(opts.key)
-    else if (result.manifest) result.key = Hypercore.key(result.manifest)
+    else if (result.manifest) result.key = Spacecore.key(result.manifest)
 
     if (result.discoveryKey) return result
 
@@ -537,7 +537,7 @@ class Corestore extends ReadyResource {
     const existing = this.cores.resume(id)
     if (existing && !existing.closing) return existing
 
-    const core = Hypercore.createCore(this.storage, {
+    const core = Spacecore.createCore(this.storage, {
       preopen: (existing && existing.opened) ? existing.closing : null, // always wait for the prev one to close first in any case...
       eagerUpgrade: true,
       notDownloadingLinger: opts.notDownloadingLinger,
