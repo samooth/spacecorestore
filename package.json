@@ -1,6 +1,6 @@
 {
   "name": "spacecorestore",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Spacecore factory that simplifies managing collections of cores.",
   "main": "index.js",
   "files": [
