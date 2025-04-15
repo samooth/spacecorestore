@@ -2,8 +2,8 @@ const test = require('brittle')
 const b4a = require('b4a')
 const tmp = require('test-tmp')
 const Rache = require('rache')
-const Hypercore = require('hypercore')
-const crypto = require('hypercore-crypto')
+const Spacecore = require('bitspacecore')
+const crypto = require('spacecore-crypto')
 
 const Corestore = require('../')
 
@@ -126,7 +126,7 @@ test('weak ref to react to cores opening', async function (t) {
   t.teardown(() => store.close())
 
   store.watch(function (core) {
-    const s = new Hypercore({ core, weak: true })
+    const s = new Spacecore({ core, weak: true })
 
     t.pass('weak ref opened passively')
 
@@ -141,7 +141,7 @@ test('weak ref to react to cores opening', async function (t) {
   await core.close()
 })
 
-test('session of hypercore sessions are tracked in corestore sessions', async function (t) {
+test('session of spacecore sessions are tracked in corestore sessions', async function (t) {
   const dir = await tmp(t)
   const store = new Corestore(dir)
 
@@ -298,8 +298,8 @@ test('open by discovery key', async function (t) {
     signers: [{ publicKey: keyPair.publicKey }]
   }
 
-  const key = Hypercore.key(manifest)
-  const discoveryKey = Hypercore.discoveryKey(key)
+  const key = Spacecore.key(manifest)
+  const discoveryKey = Spacecore.discoveryKey(key)
 
   const a1 = store.get({ discoveryKey })
   const a2 = store.get({ discoveryKey, key, manifest })

@@ -1,5 +1,5 @@
 const b4a = require('b4a')
-const Spacecore = require('spacecore')
+const Spacecore = require('bitspacecore')
 const ReadyResource = require('ready-resource')
 const sodium = require('sodium-universal')
 const crypto = require('spacecore-crypto')
