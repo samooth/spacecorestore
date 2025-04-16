@@ -13,11 +13,6 @@ Corestore provides:
 ### Installation
 `npm install corestore`
 
-> [!NOTE]
-> This readme reflects Corestore 7, our latest major version that is backed by RocksDB for storage and atomicity.
-> Whilst we are fully validating that, the npm dist-tag for latest is set to latest version of Corestore 7, the previous major, to avoid too much disruption.
-> It will be updated to 11 in a few weeks.
-
 ### Usage
 A corestore instance can be constructed with a random-access-storage module, a function that returns a random-access-storage module given a path, or a string. If a string is specified, it will be assumed to be a path to a local storage directory:
 ```js
