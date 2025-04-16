@@ -1,6 +1,6 @@
 # Corestore
 
-### [See the full API docs at docs.holepunch.to](https://docs.space.bsv.direct/helpers/corestore)
+### [See the full API docs at docs.space.bsv.direct](https://docs.space.bsv.direct/helpers/corestore)
 
 Corestore is a Spacecore factory that makes it easier to manage large collections of named Spacecores.
 
